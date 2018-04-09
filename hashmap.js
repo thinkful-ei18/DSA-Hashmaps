@@ -11,7 +11,8 @@ class HashMap {
   get(key) {
     const index = this._findSlot(key);
     if (this._slots[index] === undefined) {
-      throw new Error('Key error');
+      // throw new Error('Key error');
+      return false;
     }
     return this._slots[index].value;
   }
@@ -87,7 +88,32 @@ function main() {
 
   lor.set('Hobbit', 'Bilbo');
   lor.set('Hobbit', 'Frodo');
-  console.log(lor);
+  lor.set('Wizard', 'Gandolf');
+  lor.set('Maiar', 'The Necromancer');
+  lor.set('Maiar', 'Sauron');
+  console.log(lor.get('Maiar'));
 }
 
-main();
+function palindrome(string) {
+  let oddChar = '';
+  let oddArray = [];
+  let mapChar = new HashMap();
+  for (let i = 0; i < string.length; i++) {
+    console.log(string[i]);
+    if (mapChar.get(string[i])) {
+      //if it does exsist
+      let count = mapChar.get(string[i]); //sets count
+      mapChar.set(string[i], count + 1); // set the key string[i], value : count + 1
+    } else {
+      mapChar.set(string[i], 1); //set the key to string[i], value: 1
+    }
+  }
+  for (let i = 0; i < string.length; i++) {
+    let value = mapChar.get(string[i]);
+    if (value % 2 !== 0 && value) {
+      console.log(value);
+    }
+  }
+}
+
+console.log(palindrome('hello'));
