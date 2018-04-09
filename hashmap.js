@@ -98,20 +98,23 @@ function palindrome(string) {
   let oddChar = '';
   let oddArray = [];
   let mapChar = new HashMap();
+  let count = 0;
   for (let i = 0; i < string.length; i++) {
-    console.log(string[i]);
     if (mapChar.get(string[i])) {
       //if it does exsist
-      let count = mapChar.get(string[i]); //sets count
-      mapChar.set(string[i], count + 1); // set the key string[i], value : count + 1
+      count = mapChar.get(string[i]); //sets count
+      count++;
+      mapChar.set(string[i], count); // set the key string[i], value : count + 1
     } else {
       mapChar.set(string[i], 1); //set the key to string[i], value: 1
     }
   }
   for (let i = 0; i < string.length; i++) {
     let value = mapChar.get(string[i]);
-    if (value % 2 !== 0 && value) {
-      console.log(value);
+    if (value % 2 !== 0) {
+      console.log(`${string[i]} is odd`);
+    } else {
+      console.log(`${string[i]} is even`);
     }
   }
 }
