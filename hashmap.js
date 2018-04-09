@@ -79,6 +79,15 @@ class HashMap {
     return hash >>> 0;
   }
 }
-
 HashMap.MAX_LOAD_RATIO = 0.9;
 HashMap.SIZE_RATIO = 3;
+
+function main() {
+  let lor = new HashMap();
+
+  lor.set('Hobbit', 'Bilbo');
+  lor.set('Hobbit', 'Frodo');
+  console.log(lor);
+}
+
+main();
